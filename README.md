@@ -1,4 +1,4 @@
-# CLMonitor
+# Craigslist Monitor
 
 A script to watch Craigslist for relevant posts so you don't have to.
 
@@ -41,7 +41,7 @@ Edit the `monitor.yml` file to your liking.  It should look something like this:
 
 That's it.  If you want to log the output,
 
-  $ clockwork monitor.rb > monitor.log
+	  $ clockwork monitor.rb > monitor.log
 
 Press Control-C to exit.
 
