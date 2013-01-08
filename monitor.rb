@@ -6,8 +6,13 @@ require 'open-uri'
 require 'yaml'
 require 'clockwork'
 require 'pony'
+require 'nokogiri'
 
 include Clockwork
+
+#Craigslist tag containing full item description is currently "<section id="userbody">"
+DESCRIPTION_TAG = 'section#userbody'
+DISCLAIMER = "it's NOT ok to contact this poster with services or other commercial interests"
 
 puts "Loading monitor configuration..."
 config = YAML::load(File.open('monitor.yml'))
@@ -42,7 +47,19 @@ handler do |feed|
 
 		next if processed_posts.include?(post[:link])
 
-		searchable_description = post[:description].downcase + post[:title].downcase
+		#get full description text from nokogiri
+		html_doc = Nokogiri::HTML(open(post[:link]))
+
+		next if html_doc.css('section#userbody').empty?
+
+		#clean up description
+		user_description = html_doc.css('section#userbody').text
+		user_description = user_description.gsub(/\n|\t/, ' ')
+		user_description = user_description.gsub(/<(.*)>/, '')
+		user_description = user_description.sub(DISCLAIMER, '')
+		puts user_description
+
+		searchable_description = user_description.downcase + post[:title].downcase
 		found_include_word = false
 		found_exclude_word = false
 		include_words.each{|include_word| found_include_word = true if searchable_description.match(include_word) }
