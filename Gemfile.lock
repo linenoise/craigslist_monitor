@@ -3,17 +3,24 @@ GEM
   specs:
     clockwork (0.4.0)
       tzinfo
+    coderay (1.0.8)
     i18n (0.6.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.1)
     mime-types (1.18)
     nokogiri (1.5.6)
     polyglot (0.3.3)
     pony (1.4)
       mail (> 2.0)
+    pry (0.9.11.4)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     simple-rss (1.2.3)
+    slop (3.4.3)
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
@@ -26,4 +33,5 @@ DEPENDENCIES
   clockwork
   nokogiri
   pony
+  pry
   simple-rss

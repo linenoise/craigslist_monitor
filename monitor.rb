@@ -7,11 +7,12 @@ require 'yaml'
 require 'clockwork'
 require 'pony'
 require 'nokogiri'
+require 'pry'
 
 include Clockwork
 
-#Craigslist tag containing full item description is currently "<section id="userbody">"
-DESCRIPTION_TAG = 'section#userbody'
+#Craigslist tag containing full item description is currently "<section id="postingbody">"
+DESCRIPTION_TAG = 'section#postingbody'
 DISCLAIMER = "it's NOT ok to contact this poster with services or other commercial interests"
 
 puts "Loading monitor configuration..."
@@ -45,21 +46,33 @@ handler do |feed|
 
 	rss.items.each do |post|
 
+		puts "Testing post at #{post[:link]}"
 		next if processed_posts.include?(post[:link])
-
+		
 		#get full description text from nokogiri
 		html_doc = Nokogiri::HTML(open(post[:link]))
 
-		next if html_doc.css('section#userbody').empty?
+
+		if html_doc.css(DESCRIPTION_TAG).empty?
+			puts "Nothing found in #{DESCRIPTION_TAG}"
+			next
+		end
 
 		#clean up description
-		user_description = html_doc.css('section#userbody').text
+		user_description = html_doc.css(DESCRIPTION_TAG).text
 		user_description = user_description.gsub(/\n|\t/, ' ')
 		user_description = user_description.gsub(/<(.*)>/, '')
 		user_description = user_description.sub(DISCLAIMER, '')
-		puts user_description
 
-		searchable_description = user_description.downcase + post[:title].downcase
+		begin
+			searchable_description = user_description.downcase + post[:title].downcase
+		rescue Exception
+			STDERR.puts "Compatibility error found in post text."
+			STDERR.puts "User Description is: #{user_description.downcase}"
+			STDERR.puts "Post Title is: #{post[:title]}"
+			searchable_description = post[:title].downcase + post[:description].downcase
+		end
+		
 		found_include_word = false
 		found_exclude_word = false
 		include_words.each{|include_word| found_include_word = true if searchable_description.match(include_word) }
@@ -91,5 +104,5 @@ handler do |feed|
 end
 
 config['feeds'].each do |feed|
-  every(1.hour, feed)
+  every(16.minutes, feed)
 end
