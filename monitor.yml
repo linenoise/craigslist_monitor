@@ -1,14 +1,12 @@
 ---
 feeds:
-  - http://sfbay.craigslist.org/wri/index.rss
-  - http://portland.craigslist.org/wri/index.rss
-  - http://seattle.craigslist.org/wri/index.rss
-include: local, network, computer, technical
-exclude: freelance, internship, supplement, contract
-email_to: dann@stayskal.com
+  - http://seattle.craigslist.org/msa/index.rss
+include: broke, broken, doesn, fix, fixed, repair, repaired, needs, work
+exclude: no issues, works perfect, works great, cymbal
+email_to: sean.t.irby@gmail.com
 email_from:
   address: smtp.gmail.com
   port: 587
-  user_name: 'a_gmail_username'
-  password: 'that_gmail_password'
+  user_name: 'sean.t.irby'
+  password: 'TekkenTe12!.'
 
