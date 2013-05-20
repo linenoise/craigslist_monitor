@@ -1,22 +1,20 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    clockwork (0.5.0)
+    clockwork (0.5.1)
       tzinfo (~> 0.3.35)
-    i18n (0.6.4)
-    mail (2.5.3)
-      i18n (>= 0.4.0)
+    mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.21)
+    mime-types (1.23)
     polyglot (0.3.3)
-    pony (1.4)
+    pony (1.4.1)
       mail (> 2.0)
     simple-rss (1.2.3)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.36)
+    tzinfo (0.3.37)
 
 PLATFORMS
   ruby
