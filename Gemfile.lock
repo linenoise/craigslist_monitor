@@ -8,8 +8,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     atomic (1.1.10)
-    clockwork (0.5.3)
-      activesupport (~> 4.0.0)
+    clockwork (0.5.4)
+      activesupport
       tzinfo (~> 0.3.35)
     i18n (0.6.4)
     mail (2.5.4)
@@ -22,7 +22,7 @@ GEM
     pony (1.5)
       mail (> 2.0)
     simple-rss (1.2.3)
-    thread_safe (0.1.0)
+    thread_safe (0.1.2)
       atomic
     treetop (1.4.14)
       polyglot
