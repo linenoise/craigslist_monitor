@@ -8,7 +8,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     atomic (1.1.12)
-    clockwork (0.5.5)
+    clockwork (0.6.0)
       activesupport
       tzinfo (~> 0.3.35)
     i18n (0.6.4)
@@ -17,7 +17,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     minitest (4.7.5)
-    multi_json (1.7.8)
+    multi_json (1.7.9)
     polyglot (0.3.3)
     pony (1.5)
       mail (> 2.0)
