@@ -17,7 +17,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25)
     minitest (4.7.5)
-    multi_json (1.7.9)
+    multi_json (1.8.0)
     polyglot (0.3.3)
     pony (1.5)
       mail (> 2.0)
