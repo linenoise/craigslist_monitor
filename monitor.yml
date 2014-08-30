@@ -5,7 +5,7 @@ feeds:
   - http://seattle.craigslist.org/wri/index.rss
 include: local, network, computer, technical
 exclude: freelance, internship, supplement, contract
-email_to: dann@stayskal.com
+email_to: danne@stayskal.com
 email_from:
   address: smtp.gmail.com
   port: 587

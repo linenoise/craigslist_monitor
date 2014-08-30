@@ -28,7 +28,7 @@ Edit the `monitor.yml` file to your liking.  It should look something like this:
 	  - http://seattle.craigslist.org/wri/index.rss
 	include: local, network, computer, technical
 	exclude: freelance, internship, supplement, contract
-	email_to: dann@stayskal.com
+	email_to: danne@stayskal.com
 	email_from:
 	  address: smtp.gmail.com
 	  port: 587
@@ -49,7 +49,7 @@ Press Control-C to exit.
 
 This script is available under The MIT License.
 
-Copyright (c) 2012 Dann Stayskal <dann@stayskal.com>.
+Copyright (c) 2012 Danne Stayskal <danne@stayskal.com>.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
