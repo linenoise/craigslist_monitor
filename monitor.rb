@@ -10,7 +10,7 @@ require 'pony'
 include Clockwork
 
 puts "Loading monitor configuration..."
-config = YAML::load(File.open('monitor.yml'))
+config = YAML.load_file('monitor.yml')
 unless config['feeds']
 	puts "Please add some RSS feeds to the YAML array in monitor.yml"
 	exit 1
@@ -23,7 +23,7 @@ include_words = config['include'].split(/,/).map{|word| word.strip.downcase}
 exclude_words = config['exclude'].split(/,/).map{|word| word.strip.downcase}
 puts "done."
 
-unless File.exists?('processed_posts.txt')
+unless File.exist?('processed_posts.txt')
 	File.open('processed_posts.txt', 'w') do |file|
 		file.puts "# This file stores posts that have been processed"
 		file.puts "# so you don't get notified multiple times about the same post."
@@ -33,9 +33,9 @@ end
 
 handler do |feed|
 	puts "Polling RSS feed at #{feed}..."
-  rss = SimpleRSS.parse open(feed)
-	
-	return unless rss && rss.items
+  rss = SimpleRSS.parse URI.open(feed)
+
+	next unless rss && rss.items
 	processed_posts = File.open("processed_posts.txt").readlines.map{|line| line.chomp}
 
 	rss.items.each do |post|
